@@ -10,9 +10,9 @@ import Home from './components/Home';
  */
 const Routes = () => {
 
-  const isLoggedIn = useSelector((state) => {
-    return !!state.auth;
-});
+//   const isLoggedIn = useSelector((state) => {
+//     return !!state.auth;
+// });
 
   return (
     <div>
