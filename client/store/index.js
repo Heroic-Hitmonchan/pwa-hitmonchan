@@ -2,6 +2,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
+import camera from './camera'
 // import auth from './auth'
 
 // const reducer = combineReducers({ auth })
@@ -9,20 +10,20 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 //   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 // )
 
-// const reducer = combineReducers({
-    
-// });
+const reducer = combineReducers({
+  camera
+});
 
 // this is temp reducer
-const SET_AUTH = 'SET_AUTH'
-const reducer = (state = {}, action) => {
-  switch (action.type) {
-    case SET_AUTH:
-      return action.auth;
-    default:
-      return state;
-  }
-}
+// const SET_AUTH = 'SET_AUTH'
+// const reducer = (state = {}, action) => {
+//   switch (action.type) {
+//     case SET_AUTH:
+//       return action.auth;
+//     default:
+//       return state;
+//   }
+// }
 
 
 const middleware = composeWithDevTools(

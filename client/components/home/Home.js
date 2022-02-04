@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import Camera from '../camera/Camera'
 
 /**
  * COMPONENT
@@ -9,7 +10,8 @@ export const Home = () => {
 
   return (
     <div>
-      {/* <h3>Welcome, {username}</h3> */}
+      <h3>Welcome this is the home</h3>
+      < Camera />
     </div>
   )
 }
