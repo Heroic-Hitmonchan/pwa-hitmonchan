@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
 // import { Login, Signup } from './components/AuthForm';
 import Home from './components/home/Home';
+import Camera from './components/camera/Camera';
+import Postcamera from './components/postCamera/Postcamera';
 // import { me } from './store'
 
 /**
@@ -19,6 +21,8 @@ const Routes = () => {
       {/* {isLoggedIn ? ( */}
       <Switch>
         <Route path="/home" component={Home} />
+        <Route path="/camera" component={Camera} />
+        <Route path="/postcamera" component={Postcamera} />
         <Redirect to="/home" />
       </Switch>
       {/* // ) : (
