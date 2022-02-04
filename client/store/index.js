@@ -3,6 +3,7 @@ import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import camera from './camera'
+import song from './spotify'
 // import auth from './auth'
 
 // const reducer = combineReducers({ auth })
@@ -11,7 +12,8 @@ import camera from './camera'
 // )
 
 const reducer = combineReducers({
-  camera
+  camera,
+  song
 });
 
 // this is temp reducer
