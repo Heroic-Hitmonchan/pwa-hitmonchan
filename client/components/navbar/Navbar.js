@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import './navbar.css'
 
 const Navbar = () => {
 
@@ -11,7 +12,7 @@ const Navbar = () => {
   return (
 
 
-    <div>
+    <div className='navbar'>
       <h1>moments</h1>
       <nav>
       <input type="file" accept="image/x-png,image/jpeg,image/gif"/>
