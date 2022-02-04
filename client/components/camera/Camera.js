@@ -12,6 +12,7 @@ const Camera = () => {
         if (target.files) {
             if ( target.files.length !== 0 ) {
                 const file = target.files[0];
+                // console.log(file)
                 const newUrl = URL.createObjectURL(file);
                 dispatch(captureNewPhoto(newUrl));
                 history.push('./postcamera')
