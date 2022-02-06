@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchSongFromSpotify } from '../../store/spotify'
 import { fetchUserInfo } from '../../store/user'
+import { setToken } from '../../store/token'
 import Camera from '../camera/Camera'
 import './home.css'
 import SpotifyWebApi from 'spotify-web-api-node'
@@ -28,10 +29,20 @@ export const Home = () => {
     return state.user
   })
 
-  const [token, setToken] = useState('')
-  const [accessToken, setAccessToken] = useState()
-  const [refreshToken, setRefreshToken] = useState()
-  const [expiresIn, setExpiresIn] = useState()
+  const token = useSelector((state) => {
+    return state.token
+  })
+
+
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("user");
+    dispatch(setToken({}))
+  }
+  // const [token, setToken] = useState('')
+  // const [accessToken, setAccessToken] = useState()
+  // const [refreshToken, setRefreshToken] = useState()
+  // const [expiresIn, setExpiresIn] = useState()
 
   // useEffect(() => {
   // const hash = window.location.hash
@@ -51,14 +62,15 @@ export const Home = () => {
   //   }
 
   // }
-  useEffect(() => {
-    setToken(window.localStorage.getItem("token"))
-  }, [])
+  // useEffect(() => {
+  //   setToken(window.localStorage.getItem("token"))
+  // }, [])
 
-  // console.log(code)
-  if (code) {
+  console.log(code)
+  
     // console.log(code)
     useEffect(() => {
+      if (code !== null ) {
       axios.post('/api/token', {
         headers: {
           authorization: code,
@@ -66,21 +78,24 @@ export const Home = () => {
       }).then(({ data: response }) => {
         window.localStorage.setItem("token", JSON.stringify(response));
         
-        setAccessToken(response.accessToken);
-        setRefreshToken(response.refreshToken);
-        setExpiresIn(response.expiresIn);
+        // setAccessToken(response.accessToken);
+        // setRefreshToken(response.refreshToken);
+        // setExpiresIn(response.expiresIn);
+        dispatch(setToken(response))
         dispatch(fetchUserInfo());
-        // window.history.pushState({}, null, "/")
-        setToken(response)
+        window.history.pushState({}, null, "/")
+        // console.log('hello')
+        
       })
         .catch((err) => {
           console.log(err);
+       
         })
-
+      }
 
     }, [code])
     // useAuth(code)
-  }
+  
 
 
 
@@ -121,13 +136,10 @@ export const Home = () => {
   // let x = JSON.parse(window.localStorage.getItem("token"))
   // console.log('token =======  ', x)
 
-  console.log(token)
-  const logout = () => {
-    window.localStorage.removeItem("token");
-    setToken("")
-  }
+  // console.log(token)
+  
 
-  if (token === null || token.length === 0) {
+  if (Object.keys(token).length === 0) {
     return (
 
       <div>

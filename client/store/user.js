@@ -19,6 +19,7 @@ export const fetchUserInfo = () => {
                     authorization: bearerToken,
                 },
             });
+            window.localStorage.setItem("user", JSON.stringify(response));
             dispatch(setUser(response))
         } catch(err) {
             console.log(err)
@@ -26,7 +27,7 @@ export const fetchUserInfo = () => {
     }
 }
 
-const initialState = {};
+const initialState = JSON.parse(window.localStorage.getItem("user")) || {};
 
 export default function(state = initialState, action) {
     switch (action.type) {

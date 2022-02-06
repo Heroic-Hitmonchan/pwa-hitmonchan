@@ -5,6 +5,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import camera from './camera'
 import song from './spotify'
 import user from './user'
+import token from './token'
 // import auth from './auth'
 
 // const reducer = combineReducers({ auth })
@@ -15,7 +16,8 @@ import user from './user'
 const reducer = combineReducers({
   camera,
   song,
-  user
+  user,
+  token
 });
 
 // this is temp reducer
