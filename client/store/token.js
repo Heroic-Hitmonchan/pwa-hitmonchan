@@ -3,7 +3,6 @@ import axios from 'axios'
 const SET_TOKEN = 'SET_TOKEN';
 
 export const setToken = (token) => {
-    // window.localStorage.setItem("token", JSON.stringify(token));
     return {
         type: SET_TOKEN,
         token
