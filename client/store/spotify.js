@@ -16,7 +16,7 @@ export const fetchSongFromSpotify = (rgb, token) => {
             // this fucntion going to take the rgb value and return the playlistId
             // const playlistId = jinFunction(rgb)
             // the next three playlist ids for testing, uncomment one and send the request.
-            // const playlistId = '37i9dQZF1DWXb9I5xoXLjp'
+            const playlistId = '37i9dQZF1DWXb9I5xoXLjp'
             // const playlistId = '37i9dQZF1DXaXB8fQg7xif'
             // const playlistId = '37i9dQZF1DXaUDcU6KDCj4'
             const bearerToken = `Bearer ${token}`
