@@ -2,3 +2,37 @@
 .login-btn {
     color: white
 }
+
+.home-page-before-login-div {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-page-before-login-div > img {
+   height: 30%;
+   width: 15%; 
+}
+
+.home-page-before-login-div > p {
+    margin-bottom: 2%;
+    margin-top: 3%;
+    font-size: 80px;
+    text-shadow: 6px 6px 6px #333;
+    text-decoration: none;
+}
+
+.home-page-before-login-div > a {
+    text-decoration: none;
+    background-color: rgb(58, 4, 103);
+    padding: 1% 2%;
+    border-radius: 10px;
+    font-size: 20px;
+    box-shadow: 0px 0px 8px rgb(255,255,255);
+}
+
+.home-page-before-login-div > a:hover {
+    background-color: #ff6f61;
+}

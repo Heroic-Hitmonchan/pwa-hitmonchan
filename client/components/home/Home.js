@@ -91,10 +91,11 @@ export const Home = () => {
 
   if (Object.keys(token).length === 0) {
     return (
-      <div>
-        <h3>this is the home page before login</h3>
+      <div className='home-page-before-login-div'>
+        <img src='/logo.png' />
+        <p>Moments</p>
         <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`} className='login-btn'>Login
-          to Spotify</a>
+          with Spotify</a>
       </div>
     )
   } else {
