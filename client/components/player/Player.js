@@ -55,7 +55,7 @@ const SongGeneration = () => {
         showSaveIcon
       />
 
-      <AudioSpectrum
+      {/* <AudioSpectrum
         id="audio-canvas"
         height={300}
         width={1000}
@@ -70,7 +70,7 @@ const SongGeneration = () => {
           { stop: 1, color: "orange" },
         ]}
         gap={4}
-      />
+      /> */}
       <Link to="/home" className="post-camera-links">
         Return Home
       </Link>
