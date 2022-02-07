@@ -6,6 +6,8 @@ import Home from './components/home/Home';
 import Camera from './components/camera/Camera';
 import Postcamera from './components/postCamera/Postcamera';
 import SongGeneration from './components/player/Player'
+import Uploadphoto from './components/uploadPhoto/Uploadphoto'
+import Postupload from './components/postUpload/Postupload'
 // import { me } from './store'
 
 /**
@@ -25,6 +27,8 @@ const Routes = () => {
         <Route path="/camera" component={Camera} />
         <Route path="/postcamera" component={Postcamera} />
         <Route path="/songgeneration" component={SongGeneration} />
+        <Route path="/uploadphoto" component={Uploadphoto} />
+        <Route path="/postupload" component={Postupload} />
         <Redirect to="/home" />
       </Switch>
       {/* // ) : (
