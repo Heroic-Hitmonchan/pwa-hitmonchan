@@ -5,7 +5,7 @@ const spotifyWebApi =  require('spotify-web-api-node')
 const credentials = {
     clientId: "12ab9fc82d684679b569135ea050d5d8",
     clientSecret: '3c13d792c46d4c33a76bd6b2e8b5de94',
-    redirectUri: "http://localhost:8080/home"
+    redirectUri: "https://moments-pwa.herokuapp.com/home"
   };
 
 router.post('/', (req,res) => {
