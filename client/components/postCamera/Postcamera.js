@@ -10,7 +10,10 @@ const Postcamera = () => {
     const capturedImage = useSelector((state) => {
         return state.camera;
     });
-
+    const token = useSelector((state) => {
+        console.log(state.token)
+        return state.token
+    })
     const dispatch = useDispatch();
 
     // for the first onclick call the function that will extract the color from the image.
@@ -20,9 +23,9 @@ const Postcamera = () => {
         dispatch(captureNewPhoto({}))
     }
 
-    // const getSong = () => {
-    //     dispatch(fetchSongFromSpotify(1,'BQB6logd70BAjLps5sIjD6rZY6nCJDh1J5pEj0LgenxIAAsqQPpvvjUo9_JX_4Wu4PFaDVSHBqyV2ZmV9Suyc0Mk35Z_yRJr9HdAgaCCF2oyiGENGBlfl9eXknRQU0A_WrnGRtk3VZyXmuYOBGsdBQapeXe1xCwCdCLVoYCoZK5srSbo3RwGB93NvbpofK1tMMFulZi-SQ'))
-    // }
+    const getSong = () => {
+        dispatch(fetchSongFromSpotify(1, token.accessToken))
+    }
 
 
 
@@ -33,7 +36,7 @@ const Postcamera = () => {
             <img
                 src={capturedImage}
             />
-            <Link to="/player" onClick={() => { }} className="post-camera-links">
+            <Link to="/songgeneration" onClick={getSong} className="post-camera-links">
                 Generate song
             </Link>
             <Link to="/camera" onClick={anotherImage} className="post-camera-links">
