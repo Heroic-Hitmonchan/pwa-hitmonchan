@@ -100,11 +100,18 @@ export const Home = () => {
     )
   } else {
     return (
-      <div>
-        <h3>this is the home page after login</h3>
-        <h1>Hey, {userInfo.display_name}</h1>
+      <div className='home-page-after-login-div'>
+        <p>Hey, {userInfo.display_name}</p>
         < Camera />
-        <button onClick={logout}>Logout</button>
+        <div className='footer-home-page'>
+        <div className='footer-home-page-leftside'>
+            <input type='image' src='/history.png' onClick={() => ({})} id='hidtory-input' />
+          </div>
+          <div className='footer-home-page-rightside'>
+            <input type='image' src='/setting.png' onClick={logout} id='setting-input' />
+          </div>
+          
+        </div>
       </div>
     )
   }

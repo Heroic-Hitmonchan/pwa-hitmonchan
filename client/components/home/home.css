@@ -5,6 +5,7 @@
 
 .home-page-before-login-div {
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,3 +37,49 @@
 .home-page-before-login-div > a:hover {
     background-color: #ff6f61;
 }
+
+.home-page-after-login-div {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.home-page-after-login-div > p {
+    font-size: 70px;
+    text-shadow: 6px 6px 6px #333;
+}
+
+.footer-home-page {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.footer-home-page-rightside {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-home-page-leftside {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#setting-input {
+    width: 30%;
+    margin-right: 10%;
+    padding-bottom: 10%;
+}
+
+#hidtory-input {
+    width: 10%;
+    margin-left: 5%;
+    padding-bottom: 5%;
+}
+
+
