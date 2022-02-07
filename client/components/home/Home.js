@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUserInfo } from '../../store/user'
-import { setToken } from '../../store/token'
+import { setToken, updateToken } from '../../store/token'
 import Camera from '../camera/Camera'
 import './home.css'
 import axios from 'axios'
@@ -9,6 +9,7 @@ import axios from 'axios'
 // variables needed in the first request to spotify to get the code.
 const CLIENT_ID = "12ab9fc82d684679b569135ea050d5d8"
 const REDIRECT_URI = "http://localhost:8080/home"
+// const REDIRECT_URI = "https://moments-pwa.herokuapp.com//home"
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
 const RESPONSE_TYPE = "code"
 
@@ -24,6 +25,14 @@ export const Home = () => {
     return state.token
   })
 
+  const refreshToken = useSelector((state) => {
+    return state.token.refreshToken
+  })
+
+  const expiresIn = useSelector((state) => {
+    return state.token.expiresIn
+  })
+
   const logout = () => {
     // logout will clear the localStorage and the global state.
     window.localStorage.removeItem("token");
@@ -37,7 +46,7 @@ export const Home = () => {
   useEffect(() => {
     if (code !== null) {
       //send post request with the code value to the backend to get the tokens
-      axios.post('/api/token', {
+      axios.post('/api/token/login', {
         headers: {
           authorization: code,
         },
@@ -57,7 +66,28 @@ export const Home = () => {
     }
   }, [code])
 
-  // will add the refresh token useffect later.
+  // hook for refresh token.
+  useEffect(() => {
+    if (!refreshToken || !expiresIn) return;
+    // set interval to be invoked in 59 minutes.
+    const interval = setInterval(() => {
+      axios.post('/api/token/refresh', { refreshToken })
+        .then(({ data: response }) => {
+          // saved the tokens in the localStorage.
+          window.localStorage.setItem("token", JSON.stringify({
+            accessToken: response.accessToken,
+            refreshToken,
+            expiresIn: response.expiresIn
+          }));
+          // update the global state with the newly recieved accessToken and expiresIn .
+          dispatch(updateToken(response.accessToken, response.expiresIn))
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }, (expiresIn - 60) * 1000)
+    return () => clearInterval(interval)
+  }, [refreshToken, expiresIn])
 
   if (Object.keys(token).length === 0) {
     return (
