@@ -24,7 +24,7 @@ const SCOPE = [
 const LOGIN = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE.join(
   "%20"
 )}`;
-console.log(LOGIN);
+// console.log(LOGIN);
 
 export const Home = () => {
   const dispatch = useDispatch();
