@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/user";
 import { setToken, updateToken } from "../../store/token";
 import Camera from "../camera/Camera";
+import Uploadphoto from "../uploadPhoto/Uploadphoto"
 import "./home.css";
 import axios from "axios";
 
@@ -111,7 +112,7 @@ export const Home = () => {
       <div className='home-page-before-login-div'>
         <img src='/logo.png' />
         <p>Moments</p>
-        <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`} className='login-btn'>Login
+        <a href={LOGIN} className='login-btn'>Login
           with Spotify</a>
       </div>
     );
@@ -120,6 +121,8 @@ export const Home = () => {
       <div className='home-page-after-login-div'>
         <p>Hey, {userInfo.display_name}</p>
         < Camera />
+        <br />
+        < Uploadphoto />
         <div className='footer-home-page'>
           <div className='footer-home-page-leftside'>
             <input type='image' src='/history.png' onClick={() => ({})} id='hidtory-input' />

@@ -2,17 +2,20 @@ const router = require('express').Router()
 const { models: { User }} = require('../db')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    // const users = await User.findAll({
-      // explicitly select only the id and username fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      // attributes: ['id', 'username']
-    // }
-    // )
-    res.json('hello')
-    // res.json(users)
+    let user = await User.findOrCreate({
+      where: {
+        spotifyUserId: req.body.id
+      }, 
+      defaults: {
+        displayName: req.body.display_name,
+        email: 'test@gmail.com'
+      }
+    })
+    console.log('user:', user)
+    if (user[1]) {res.status(201).send(user[0])}
+    else {res.send(user[0])}
   } catch (err) {
     next(err)
   }

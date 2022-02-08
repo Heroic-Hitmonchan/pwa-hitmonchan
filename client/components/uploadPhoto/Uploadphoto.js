@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { captureNewPhoto } from '../../store/camera';
 import axios from 'axios'
-import useColorThief from 'use-color-thief'
 
 function uploadFile() {
   let history = useHistory()

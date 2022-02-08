@@ -10,6 +10,8 @@ router.get('/s3Url', async (req, res) => {
 
 router.use('/users', require('./users'))
 router.use('/token', require('./token'))
+router.use('/images', require('./images'))
+router.use('/songs', require('./songs'))
 
 router.use((req, res, next) => {
   const error = new Error('Not Found')

@@ -7,13 +7,13 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 5;
 
 const User = db.define('user', {
-  username: {
+  displayName: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
   },
   spotifyUserId: {
-    type: Sequelize.BIGINT,
+    type: Sequelize.TEXT,
     allowNull: false,
     unique: true,
     validator: {
@@ -22,12 +22,12 @@ const User = db.define('user', {
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false,
-    unique: true,
-    validator: {
-      isEmail: true,
-      notEmpty: true
-    }
+    // allowNull: false,
+    // unique: true,
+    // validator: {
+    //   isEmail: true,
+    //   notEmpty: true
+    // }
   },
 })
 
