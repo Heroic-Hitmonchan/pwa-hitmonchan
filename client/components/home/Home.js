@@ -9,8 +9,8 @@ import axios from "axios";
 
 // variables needed in the first request to spotify to get the code.
 const CLIENT_ID = "12ab9fc82d684679b569135ea050d5d8";
-// const REDIRECT_URI = "http://localhost:8080/home";
-const REDIRECT_URI = "https://moments-pwa.herokuapp.com/home"
+const REDIRECT_URI = "http://localhost:8080/home";
+// const REDIRECT_URI = "https://moments-pwa.herokuapp.com/home"
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "code";
 const SCOPE = [
