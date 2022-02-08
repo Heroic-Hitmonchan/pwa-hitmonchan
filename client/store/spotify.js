@@ -35,7 +35,7 @@ export const fetchSongFromSpotify = (playlistId, token, imageId) => {
             };
             const songNumber = generateSongNum();
             await axios.post(`/api/songs/${imageId}`, {
-                song: response.tracks.items[songNumber].track.id
+                song: response.tracks.items[songNumber].track.uri
             })
             console.log("SETSONG:", response.tracks.items[songNumber].track)
             // this will send the track inforation as an object to the reducer.

@@ -4,6 +4,7 @@ import useColorThief from 'use-color-thief'
 import colorSort from '../../store/colorSort'
 import asyncEffect from './helper'
 import {fetchSongFromSpotify} from '../../store/spotify'
+import Player from '../player/Player'
 // const source = 'https://jins-test-aws-bucket-react.s3.us-west-2.amazonaws.com/1643928379998'
 
 function postUpload() {
@@ -50,7 +51,8 @@ function postUpload() {
   return (
     <div>
       {playlist.length ? <div>Playlist ID: {playlist}</div> : <div>Finding your song...</div>}
-      {song.id ? <div>Song ID: {song.id}</div> : <div>Generating song id...</div>}
+      {song.id ? <div>Song ID: {song.uri}</div> : <div>Generating song id...</div>}
+      {song.id && <Player />}
     </div>
   );
 }
