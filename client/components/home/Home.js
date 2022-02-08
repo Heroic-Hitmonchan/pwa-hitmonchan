@@ -24,7 +24,6 @@ const SCOPE = [
 const LOGIN = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE.join(
   "%20"
 )}`;
-console.log(LOGIN);
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -109,20 +108,27 @@ export const Home = () => {
 
   if (Object.keys(token).length === 0) {
     return (
-      <div>
-        <h3>this is the home page before login</h3>
-        <a href={LOGIN} className="login-btn">
-          Login to Spotify
-        </a>
+      <div className='home-page-before-login-div'>
+        <img src='/logo.png' />
+        <p>Moments</p>
+        <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`} className='login-btn'>Login
+          with Spotify</a>
       </div>
     );
   } else {
     return (
-      <div>
-        <h3>this is the home page after login</h3>
-        <h1>Hey, {userInfo.display_name}</h1>
-        <Camera />
-        <button onClick={logout}>Logout</button>
+      <div className='home-page-after-login-div'>
+        <p>Hey, {userInfo.display_name}</p>
+        < Camera />
+        <div className='footer-home-page'>
+          <div className='footer-home-page-leftside'>
+            <input type='image' src='/history.png' onClick={() => ({})} id='hidtory-input' />
+          </div>
+          <div className='footer-home-page-rightside'>
+            <input type='image' src='/setting.png' onClick={logout} id='setting-input' />
+          </div>
+
+        </div>
       </div>
     );
   }

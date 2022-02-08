@@ -1,0 +1,28 @@
+
+.file {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+}
+
+.camera-component-div {
+    width: 100%;
+}
+
+
+.camera-component-div-label {
+    display: table;
+    margin: 0 auto;
+    padding: 5%;
+    font-size: 30px;
+    background-color: rgb(58, 4, 103);
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px rgb(255,255,255);
+    cursor: pointer;
+}
+
+.camera-component-div-label:hover {
+    background-color: #ff6f61;
+}
+
