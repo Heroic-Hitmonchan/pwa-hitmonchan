@@ -36,12 +36,15 @@ export const fetchSongFromSpotify = (playlistId, token, imageId) => {
             };
             const songNumber = generateSongNum();
             const songInfo = response.tracks.items[songNumber].track
-            await axios.post(`/api/songs/${imageId}`, {
-                song: songInfo.uri
-            })
-            console.log("SETSONG:", response.tracks.items[songNumber].track.artists)
             const artists = songInfo.artists.map(function(art) { return art.name })
-            console.log(artists)
+            await axios.post(`/api/songs/${imageId}`, {
+                song: songInfo.uri,
+                artistName: artists,
+                trackName: songInfo.name
+            })
+            //console.log("SETSONG:", response.tracks.items[songNumber].track.artists)
+            
+            
             // this will send the track inforation as an object to the reducer.
             // including the url which can be accessed by adding .external_urls.spotify
             dispatch(setSong(response.tracks.items[songNumber].track));

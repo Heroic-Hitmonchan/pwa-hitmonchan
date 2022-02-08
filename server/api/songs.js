@@ -5,12 +5,16 @@ module.exports = router
 
 router.post('/:imageId', async (req, res, next) => {
   try {
+    console.log(req.body)
       const song = await Song.findOrCreate({
         where: {
           spotifySongId: req.body.song,
+          artistName: req.body.artistName,
+          trackName: req.body.trackName,
           imageId: req.params.imageId
         }
       })
+      console.log(song)
       if (song[1]) {
         console.log(Object.keys(song[0].__proto__))
         const image = await Image.findByPk(req.params.imageId)
