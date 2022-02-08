@@ -3,7 +3,7 @@ const db = require('../db')
 
 const Image = db.define('image', {
     colorData: Sequelize.STRING,
-    externalId: Sequelize.STRING,
+    awsUrl: Sequelize.STRING,
 })
 
 module.exports = Image

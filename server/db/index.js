@@ -8,6 +8,15 @@ const Song = require('./models/Song')
 
 //associations could go here!
 
+// User - Image | O - M
+User.hasMany(Image)
+Image.belongsTo(User)
+
+// Image - Song | O - M
+Image.hasMany(Song)
+Song.belongsTo(Image)
+
+
 module.exports = {
   db,
   models: {

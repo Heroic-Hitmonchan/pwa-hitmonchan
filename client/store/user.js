@@ -22,6 +22,11 @@ export const fetchUserInfo = () => {
                     authorization: bearerToken,
                 },
             });
+
+            const {display_name, id} = response
+
+            const { data:res } = await axios.post('/api/users/', {display_name, id})
+            console.log("response received:", res)
             // saved the info in the localStorage
             window.localStorage.setItem("user", JSON.stringify(response));
             // update global state with the recieved info.
