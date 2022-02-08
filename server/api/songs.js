@@ -13,7 +13,7 @@ router.post('/:imageId', async (req, res, next) => {
       })
       if (song[1]) {
         console.log(Object.keys(song[0].__proto__))
-        image = await Image.findByPk(req.params.imageId)
+        const image = await Image.findByPk(req.params.imageId)
         song[0].setImage(image)
         await song[0].save()
         res.status(201).send(song[0])
@@ -22,3 +22,14 @@ router.post('/:imageId', async (req, res, next) => {
     next(err)
   }
 })
+// router.get("/history", (req, res, next) => {
+//   try {
+//     const history = await Image.findAll({
+//       where: {
+
+//       }
+//     })
+//   } catch (error) {
+//     next(error)
+//   }
+// })

@@ -27,6 +27,7 @@ export const fetchSongFromSpotify = (playlistId, token, imageId) => {
                 },
             });
             console.log("response:", response)
+            
             let max = response.tracks.items.length;
 
             // create a random number function
@@ -34,10 +35,13 @@ export const fetchSongFromSpotify = (playlistId, token, imageId) => {
                 return Math.floor(Math.random() * max);
             };
             const songNumber = generateSongNum();
+            const songInfo = response.tracks.items[songNumber].track
             await axios.post(`/api/songs/${imageId}`, {
-                song: response.tracks.items[songNumber].track.uri
+                song: songInfo.uri
             })
-            console.log("SETSONG:", response.tracks.items[songNumber].track)
+            console.log("SETSONG:", response.tracks.items[songNumber].track.artists)
+            const artists = songInfo.artists.map(function(art) { return art.name })
+            console.log(artists)
             // this will send the track inforation as an object to the reducer.
             // including the url which can be accessed by adding .external_urls.spotify
             dispatch(setSong(response.tracks.items[songNumber].track));
