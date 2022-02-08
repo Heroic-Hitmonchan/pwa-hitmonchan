@@ -30,21 +30,23 @@ const Postcamera = () => {
 
 
     return (
-        <div>
-            <h1>I'm the post camera component</h1>
-            {/* <button onClick={getSong}>song</button> */}
+        <div className="post-camera-page-div">
+            <div className="post-camera-logo-div">
+                <Link to="/home" onClick={anotherImage} >
+                    <img src="/logo.png" className="post-camera-links-logo" />
+                </Link>
+            </div>
             <img
                 src={capturedImage}
             />
-            <Link to="/songgeneration" onClick={getSong} className="post-camera-links">
-                Generate song
-            </Link>
-            <Link to="/camera" onClick={anotherImage} className="post-camera-links">
-                another image
-            </Link>
-            <Link to="/home" onClick={anotherImage} className="post-camera-links">
-                Cancel
-            </Link>
+            <div className="post-camera-btns-div">
+                <Link to="/songgeneration" onClick={getSong} className="post-camera-links">
+                    Generate song
+                </Link>
+                <Link to="/home" onClick={anotherImage} className="post-camera-links">
+                    another image
+                </Link>
+            </div>
         </div>
     )
 }
