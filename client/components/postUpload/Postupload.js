@@ -22,7 +22,7 @@ function postUpload() {
   });
 
   const {palette} = useColorThief(camera, {
-    format: 'rgb',
+    format: 'hex',
     colorCount: 10,
     quality: 1,
   })

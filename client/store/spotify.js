@@ -17,9 +17,9 @@ export const fetchSongFromSpotify = (playlistId, token, imageId) => {
             // this fucntion going to take the rgb value and return the playlistId
             // const playlistId = jinFunction(rgb)
             // the next three playlist ids for testing, uncomment one and send the request.
-            // const playlistId = '37i9dQZF1DWXb9I5xoXLjp'
-            // const playlistId = '37i9dQZF1DXaXB8fQg7xif'
-            // const playlistId = '37i9dQZF1DXaUDcU6KDCj4'
+            //const playlistId = '37i9dQZF1DWXb9I5xoXLjp'
+            //const playlistId = '37i9dQZF1DXaXB8fQg7xif'
+            //const playlistId = '37i9dQZF1DXaUDcU6KDCj4'
             const bearerToken = `Bearer ${token}`
             const { data: response } = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
                 headers: {

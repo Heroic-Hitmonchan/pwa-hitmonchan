@@ -10,7 +10,7 @@ router.post('/:id', async (req, res, next) => {
     if (!user) res.send({error: 'no user found'})
     let image = await Image.findOrCreate({
         where: {
-            colorData: 'testdata',
+            colorData: req.body.colorData,
             userId: user.id
         },
         defaults: {
