@@ -24,7 +24,6 @@ const SCOPE = [
 const LOGIN = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE.join(
   "%20"
 )}`;
-// console.log(LOGIN);
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -122,13 +121,13 @@ export const Home = () => {
         <p>Hey, {userInfo.display_name}</p>
         < Camera />
         <div className='footer-home-page'>
-        <div className='footer-home-page-leftside'>
+          <div className='footer-home-page-leftside'>
             <input type='image' src='/history.png' onClick={() => ({})} id='hidtory-input' />
           </div>
           <div className='footer-home-page-rightside'>
             <input type='image' src='/setting.png' onClick={logout} id='setting-input' />
           </div>
-          
+
         </div>
       </div>
     );
