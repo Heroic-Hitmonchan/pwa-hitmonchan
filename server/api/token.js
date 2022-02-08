@@ -1,12 +1,12 @@
 const router = require('express').Router()
 const spotifyWebApi = require('spotify-web-api-node')
-
+require("dotenv").config({path: "../../.env"})
 // credentials needed to get the tokens.
 const credentials = {
-    clientId: "12ab9fc82d684679b569135ea050d5d8",
-    clientSecret: '3c13d792c46d4c33a76bd6b2e8b5de94',
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     redirectUri: "http://localhost:8080/home"
-    // redirectUri: "https://moments-pwa.herokuapp.com//home"
+    // redirectUri: "https://moments-pwa.herokuapp.com/home"
 };
 
 router.post('/login', (req, res) => {
