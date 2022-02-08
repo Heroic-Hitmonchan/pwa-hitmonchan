@@ -1,18 +1,35 @@
 import axios from 'axios'
 
-const CAPTURE_PHOTO = 'CAPTURE_PHOTO';
+const ADD_PHOTO = 'ADD_PHOTO';
+const ADD_FILE = 'ADD_FILE';
 
-export const captureNewPhoto = (image) => {
+
+export const captureNewPhoto = (photo) => {
     return {
-        type: CAPTURE_PHOTO,
-        image
+        type: ADD_PHOTO,
+        photo
     }
 }
 
-export default function (state = {}, action) {
+export const addfile = (file) => {
+    return {
+        type: ADD_FILE,
+        file
+    }
+}
+
+let initialState = {
+    photo: {},
+    file: {}
+}
+
+
+export default function (state = initialState, action) {
     switch (action.type) {
-        case CAPTURE_PHOTO:
-            return action.image
+        case ADD_PHOTO:
+            return { ...state, photo: action.photo };
+        case ADD_FILE:
+            return { ...state, file: action.file };
         default:
             return state
     }

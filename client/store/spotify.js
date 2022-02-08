@@ -10,10 +10,11 @@ export const setSong = (song) => {
     }
 }
 
-export const fetchSongFromSpotify = (playlistId, token, imageId) => {
+export const fetchSongFromSpotify = (playlistId, imageId) => {
     return async (dispatch) => {
         try {
-            console.log("playlistId:", playlistId)
+            let token = JSON.parse(window.localStorage.getItem("token")).accessToken
+            // console.log("playlistId:", playlistId)
             // this fucntion going to take the rgb value and return the playlistId
             // const playlistId = jinFunction(rgb)
             // the next three playlist ids for testing, uncomment one and send the request.
@@ -21,12 +22,13 @@ export const fetchSongFromSpotify = (playlistId, token, imageId) => {
             //const playlistId = '37i9dQZF1DXaXB8fQg7xif'
             //const playlistId = '37i9dQZF1DXaUDcU6KDCj4'
             const bearerToken = `Bearer ${token}`
+            // console.log(bearerToken)
             const { data: response } = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
                 headers: {
                     authorization: bearerToken,
                 },
             });
-            console.log("response:", response)
+            // console.log("response:", response)
             let max = response.tracks.items.length;
 
             // create a random number function

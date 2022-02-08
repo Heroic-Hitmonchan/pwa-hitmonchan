@@ -2,13 +2,13 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {createLogger} from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import camera from './camera'
+import upload from './camera'
 import song from './spotify'
 import user from './user'
 import token from './token'
 
 const reducer = combineReducers({
-  camera,
+  upload,
   song,
   user,
   token

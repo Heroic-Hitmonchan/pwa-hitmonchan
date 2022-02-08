@@ -3,28 +3,50 @@ import { useSelector, useDispatch } from "react-redux";
 import AudioSpectrum from "react-audio-spectrum";
 import { Link } from "react-router-dom";
 import SpotifyPlayer from "react-spotify-web-playback";
-// import
-// const Artists = (artists) => {
-//   if (artists.length === 1) {
-//     return <h3>{artists[0]}</h3>;
-//   } else {
-//     return (
-//       <>
-//         {artists.map((art, index) => {
-//           <h3 key={index}>{art}</h3>;
-//         })}
-//       </>
-//     );
-//   }
-// };
+import useColorThief from 'use-color-thief'
+import asyncEffect from '../postUpload/helper'
+import colorSort from '../../store/colorSort'
+import {fetchSongFromSpotify} from '../../store/spotify'
+
 const SongGeneration = () => {
+
+  const dispatch = useDispatch()
+
   const setUp = useSelector((state) => {
     return {
+      user: state.user,
       song: state.song,
-      camera: state.camera,
+      upload: state.upload,
       token: state.token.accessToken,
     };
   });
+
+  const {palette} = useColorThief(setUp.upload.photo, {
+    format: 'hex',
+    colorCount: 10,
+    quality: 1,
+  })
+
+  useEffect(() => {
+    (async () => {
+      if (palette) {
+        console.log("palette:", palette[0])
+        const currentPlaylist = colorSort(palette[0])
+        // setPlaylist(currentPlaylist)
+        // console.log("user:", user)
+        const image = await asyncEffect(palette, setUp.user.id, setUp.upload.photo)
+        // console.log("IMAGE:", image)
+        dispatch(fetchSongFromSpotify(currentPlaylist, image.id))
+      }
+    })()
+  }, [palette])
+
+  let x = ''
+
+  // useEffect(() => {
+  //   let autoPlay
+  // }, [songUri])
+
   // const {
   //   song: { artists, preview_url },
   // } = setUp;
@@ -32,45 +54,21 @@ const SongGeneration = () => {
   // console.log(artists[0].name)
   const songUri = setUp.song.uri;
   const songUrl = setUp.song.preview_url
-  console.log(songUri);
+  // console.log(songUri);
   return (
     <>
       <h1>Welcome to Song Generation</h1>
-      <img className="user-image" src={setUp.camera} />
-      {/* <h2 className="song-name">{setUp.song.name}</h2> */}
-
-      {/* <audio
-        id="audio-element"
-        controls
-        autoPlay
-        src={songUrl}
-        crossOrigin="anonymous"
-      /> */}
+      <img className="user-image" src={setUp.upload.photo} />
+      
         <SpotifyPlayer
-        id="audio-element"
         token={setUp.token}
         uris={songUri}
         autoPlay
         play
+        callback={(state) => console.log(state)}
         showSaveIcon
       />
 
-      {/* <AudioSpectrum
-        id="audio-canvas"
-        height={300}
-        width={1000}
-        audioId={"audio-element"}
-        capColor={"orange"}
-        capHeight={2}
-        meterWidth={10}
-        meterCount={512}
-        meterColor={[
-          { stop: 0, color: "#490f77" },
-          { stop: 0.5, color: "#C7594B" },
-          { stop: 1, color: "orange" },
-        ]}
-        gap={4}
-      /> */}
       <Link to="/home" className="post-camera-links">
         Return Home
       </Link>
