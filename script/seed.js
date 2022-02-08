@@ -16,12 +16,12 @@ async function seed() {
   //   User.create({ username: 'hitmonchan', password: '123' }),
   // ])
 
-  console.log(`seeded ${users.length} users`)
+  // console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
   return {
     users: {
-      cody: users[0],
-      murphy: users[1]
+      // cody: users[0],
+      // murphy: users[1]
     }
   }
 }
