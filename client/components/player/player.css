@@ -41,7 +41,7 @@
     width: 100%;
 }
 
-@media screen and (min-width:1366px){ 
+@media (max-width:1366px) and (display-mode:standalone) { 
     .logo-div {
         display: flex;
         flex-direction: row;

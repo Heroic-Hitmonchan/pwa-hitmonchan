@@ -74,7 +74,7 @@ const SongGeneration = () => {
             token={setUp.token}
             uris={songUri}
             autoPlay
-            play
+            
             showSaveIcon
           />
         </div>
