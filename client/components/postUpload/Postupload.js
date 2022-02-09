@@ -25,7 +25,6 @@ function postUpload() {
   const matchSong = async () => {
     //get secure URL from server
     const { data: url } = await axios.get("api/s3Url")
-    console.log(url)
     //post the image directly to the s3 bucket
     const headers = {
       "Content-Type": "multipart/form-data"

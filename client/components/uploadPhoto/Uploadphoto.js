@@ -15,7 +15,6 @@ function uploadFile() {
     if (target.files) {
       if (target.files.length !== 0) {
         const file = target.files[0];
-       
         dispatch(addfile(file));
         history.push('./postUpload')
       }

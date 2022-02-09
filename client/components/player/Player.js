@@ -5,7 +5,8 @@ import SpotifyPlayer from "react-spotify-web-playback";
 import useColorThief from 'use-color-thief'
 import asyncEffect from '../postUpload/helper'
 import colorSort from '../../store/colorSort'
-import { fetchSongFromSpotify } from '../../store/spotify'
+import { fetchSongFromSpotify, setSong } from '../../store/spotify'
+import { captureNewPhoto } from '../../store/camera'
 import './player.css'
 
 const SongGeneration = () => {
@@ -44,6 +45,9 @@ const SongGeneration = () => {
 
   const clear = () => {
     window.localStorage.removeItem("song");
+    window.localStorage.removeItem("image");
+    dispatch(setSong({}));
+    dispatch(captureNewPhoto({}))
   }
 
   const songUri = setUp.song.uri;
