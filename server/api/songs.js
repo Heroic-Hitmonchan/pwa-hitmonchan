@@ -1,11 +1,11 @@
 const router = require('express').Router()
+const Sequelize = require('sequelize')
 // const { default: axios } = require('axios')
 const { models: { User, Image, Song }} = require('../db')
 module.exports = router
 
 router.post('/:imageId', async (req, res, next) => {
   try {
-    console.log(req.body)
       const song = await Song.findOrCreate({
         where: {
           spotifySongId: req.body.song,
@@ -26,14 +26,15 @@ router.post('/:imageId', async (req, res, next) => {
     next(err)
   }
 })
-// router.get("/history", (req, res, next) => {
-//   try {
-//     const history = await Image.findAll({
-//       where: {
-
-//       }
-//     })
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+router.get("/", async (req, res, next) => {
+  try {
+    const history = await Song.findAll({
+      include: {
+        model: Image,
+      }
+    })
+    res.status(200).json(history)
+  } catch (error) {
+    next(error)
+  }
+})

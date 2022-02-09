@@ -125,7 +125,7 @@ export const Home = () => {
         < Uploadphoto />
         <div className='footer-home-page'>
           <div className='footer-home-page-leftside'>
-            <input type='image' src='/history.png' onClick={() => ({})} id='hidtory-input' />
+            <input type='image' src='/history.png' onClick={() => ({})} id='history-input' />
           </div>
           <div className='footer-home-page-rightside'>
             <input type='image' src='/setting.png' onClick={logout} id='setting-input' />
