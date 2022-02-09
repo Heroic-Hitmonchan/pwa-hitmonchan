@@ -18,6 +18,8 @@ export const addfile = (file) => {
     }
 }
 
+
+
 let initialState = {
     photo: {},
     file: {}
@@ -34,3 +36,24 @@ export default function (state = initialState, action) {
             return state
     }
 }
+
+// let initialState = {}
+
+
+// export const photo = (state = initialState, action)  => {
+//     switch (action.type) {
+//         case ADD_PHOTO:
+//             return action.photo
+//         default:
+//             return state
+//     }
+// }
+
+// export const file = (state = initialState, action)  => {
+//     switch (action.type) {
+//         case ADD_FILE:
+//             return action.file
+//         default:
+//             return state
+//     }
+// }

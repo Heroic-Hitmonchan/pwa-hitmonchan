@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import useColorThief from 'use-color-thief'
-import colorSort from '../../store/colorSort'
-import asyncEffect from './helper'
+
 import { Link } from 'react-router-dom';
-import {fetchSongFromSpotify} from '../../store/spotify'
-import Player from '../player/Player'
+
 import { addfile, captureNewPhoto } from '../../store/camera'
 import axios from 'axios'
 // const source = 'https://jins-test-aws-bucket-react.s3.us-west-2.amazonaws.com/1643928379998'
 
 function postUpload() {
 
-  let [playlist, setPlaylist] = useState('')
+  // let [playlist, setPlaylist] = useState('')
 
   const dispatch = useDispatch()
 
@@ -38,44 +35,13 @@ function postUpload() {
     await axios.put(url, upload.file, { headers })
     const imageUrl = url.split("?")[0]
     dispatch(captureNewPhoto(imageUrl));
-    // history.push('/postUpload')
   }
 
-  // const {palette} = useColorThief(upload.photo, {
-  //   format: 'hex',
-  //   colorCount: 10,
-  //   quality: 1,
-  // })
-
-  // useEffect(() => {
-  //   (async () => {
-  //     if (palette) {
-  //       console.log("palette:", palette[0])
-  //       const currentPlaylist = colorSort(palette[0])
-  //       setPlaylist(currentPlaylist)
-  //       console.log("user:", user)
-  //       const image = await asyncEffect(palette, user.id, upload.photo)
-  //       console.log("IMAGE:", image)
-  //       dispatch(fetchSongFromSpotify(currentPlaylist, token.accessToken, image.id))
-  //     }
-  //   })()
-  // }, [palette])
-  
-  // useEffect(() => {
-  //   if (image) {
-  //     console.log("image:", image)
-  //   }
-  // }, [image])
   const anotherImage = () => {
     dispatch(addfile({}))
 }
 
   return (
-    // <div>
-    //   {playlist.length ? <div>Playlist ID: {playlist}</div> : <div>Finding your song...</div>}
-    //   {song.id ? <div>Song ID: {song.uri}</div> : <div>Generating song id...</div>}
-    //   {song.id && <Player />}
-    // </div>
     <div className="post-camera-page-div">
             <div className="post-camera-logo-div">
                 <Link to="/home" onClick={anotherImage} >

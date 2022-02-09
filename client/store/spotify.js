@@ -39,7 +39,7 @@ export const fetchSongFromSpotify = (playlistId, imageId) => {
             await axios.post(`/api/songs/${imageId}`, {
                 song: response.tracks.items[songNumber].track.uri
             })
-            console.log("SETSONG:", response.tracks.items[songNumber].track)
+            window.localStorage.setItem("song", JSON.stringify(response.tracks.items[songNumber].track));
             // this will send the track inforation as an object to the reducer.
             // including the url which can be accessed by adding .external_urls.spotify
             dispatch(setSong(response.tracks.items[songNumber].track));
@@ -51,7 +51,8 @@ export const fetchSongFromSpotify = (playlistId, imageId) => {
     }
 }
 
-const initialState = {};
+const initialState = JSON.parse(window.localStorage.getItem("song")) || {};
+
 
 export default function(state = initialState, action) {
     switch (action.type) {

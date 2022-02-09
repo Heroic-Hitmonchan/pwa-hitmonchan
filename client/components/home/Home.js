@@ -120,8 +120,6 @@ export const Home = () => {
     return (
       <div className='home-page-after-login-div'>
         <p>Hey, {userInfo.display_name}</p>
-        {/* < Camera /> */}
-        <br />
         < Uploadphoto />
         <div className='footer-home-page'>
           <div className='footer-home-page-leftside'>
