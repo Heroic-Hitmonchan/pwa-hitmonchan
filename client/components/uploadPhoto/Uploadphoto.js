@@ -6,19 +6,16 @@ import './uploadphoto.css'
 
 
 function uploadFile() {
-  let history = useHistory()
-  // const [source, setSource] = useState('')
-  // const [currentImag, setCurrentImage] = useState('')
-  const dispatch = useDispatch();
 
-  const image = useSelector((state) => {
-    return state.camera;
-  });
+  let history = useHistory()
+  
+  const dispatch = useDispatch();
 
   const handleChange = (target) => {
     if (target.files) {
       if (target.files.length !== 0) {
         const file = target.files[0];
+       
         dispatch(addfile(file));
         history.push('./postUpload')
       }

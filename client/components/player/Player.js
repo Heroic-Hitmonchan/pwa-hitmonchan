@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import SpotifyPlayer from "react-spotify-web-playback";
@@ -16,12 +16,13 @@ const SongGeneration = () => {
     return {
       user: state.user,
       song: state.song,
-      upload: state.upload,
+      photo: state.photo,
+      file: state.file,
       token: state.token.accessToken,
     };
   });
 
-  const { palette } = useColorThief(setUp.upload.photo, {
+  const { palette } = useColorThief(setUp.photo, {
     format: 'hex',
     colorCount: 10,
     quality: 1,
@@ -34,7 +35,7 @@ const SongGeneration = () => {
 
         const currentPlaylist = colorSort(palette[0])
 
-        const image = await asyncEffect(palette, setUp.user.id, setUp.upload.photo)
+        const image = await asyncEffect(palette, setUp.user.id, setUp.photo)
         // dispatch to fetch the song list from spotify.
         dispatch(fetchSongFromSpotify(currentPlaylist, image.id))
       }
@@ -63,15 +64,15 @@ const SongGeneration = () => {
           </Link>
         </div>
         <p>your photo matched with {setUp.song.name}, enjoy</p>
-        <img className="user-image" src={setUp.upload.photo} />
+        <img className="user-image" src={setUp.photo} />
         <div className='player-div'>
-        <SpotifyPlayer
-          token={setUp.token}
-          uris={songUri}
-          autoPlay
-          play
-          showSaveIcon
-        />
+          <SpotifyPlayer
+            token={setUp.token}
+            uris={songUri}
+            autoPlay
+            play
+            showSaveIcon
+          />
         </div>
       </div>
     );

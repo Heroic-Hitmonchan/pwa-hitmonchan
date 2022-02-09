@@ -1,4 +1,3 @@
-import axios from 'axios'
 
 const ADD_PHOTO = 'ADD_PHOTO';
 const ADD_FILE = 'ADD_FILE';
@@ -12,48 +11,31 @@ export const captureNewPhoto = (photo) => {
 }
 
 export const addfile = (file) => {
+    window.localStorage.setItem("file", JSON.stringify(file));
     return {
         type: ADD_FILE,
         file
     }
 }
 
+let initialState1 = JSON.parse(window.localStorage.getItem("image")) || {}
 
 
-let initialState = {
-    photo: {},
-    file: {}
-}
-
-
-export default function (state = initialState, action) {
+export const photo = (state = initialState1, action)  => {
     switch (action.type) {
         case ADD_PHOTO:
-            return { ...state, photo: action.photo };
-        case ADD_FILE:
-            return { ...state, file: action.file };
+            return action.photo
         default:
             return state
     }
 }
 
-// let initialState = {}
-
-
-// export const photo = (state = initialState, action)  => {
-//     switch (action.type) {
-//         case ADD_PHOTO:
-//             return action.photo
-//         default:
-//             return state
-//     }
-// }
-
-// export const file = (state = initialState, action)  => {
-//     switch (action.type) {
-//         case ADD_FILE:
-//             return action.file
-//         default:
-//             return state
-//     }
-// }
+let initialState2 = JSON.parse(window.localStorage.getItem("file")) || {}
+export const file = (state = initialState2, action)  => {
+    switch (action.type) {
+        case ADD_FILE:
+            return action.file
+        default:
+            return state
+    }
+}
