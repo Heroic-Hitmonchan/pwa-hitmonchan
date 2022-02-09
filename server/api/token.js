@@ -36,8 +36,8 @@ router.post('/refresh', (req, res) => {
         refreshToken,
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        // redirectUri: "http://localhost:8080/home"
-        redirectUri: "https://moments-pwa.herokuapp.com/home"
+        redirectUri: "http://localhost:8080/home"
+        // redirectUri: "https://moments-pwa.herokuapp.com/home"
     });
     spotifyApi.refreshAccessToken()
         .then((data) => {
