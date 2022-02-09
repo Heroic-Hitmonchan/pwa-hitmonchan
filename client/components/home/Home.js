@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/user";
 import { setToken, updateToken } from "../../store/token";
-import Camera from "../camera/Camera";
 import Uploadphoto from "../uploadPhoto/Uploadphoto"
 import "./home.css";
 import axios from "axios";
@@ -120,8 +119,6 @@ export const Home = () => {
     return (
       <div className='home-page-after-login-div'>
         <p>Hey, {userInfo.display_name}</p>
-        < Camera />
-        <br />
         < Uploadphoto />
         <div className='footer-home-page'>
           <div className='footer-home-page-leftside'>

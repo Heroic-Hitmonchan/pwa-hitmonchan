@@ -1,48 +1,32 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { captureNewPhoto } from '../../store/camera';
-import axios from 'axios'
+import {  addfile } from '../../store/camera';
+import './uploadphoto.css'
+
 
 function uploadFile() {
+
   let history = useHistory()
-  const [source, setSource] = useState('')
+  
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    console.log(e.target.value)
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    console.log('e.target:', e.target)
-    const file = e.target.imageInput.files[0]
-    console.log("file:", file)
-
-    //get secure URL from server
-    const {data:url} = await axios.get("api/s3Url")
-    console.log(url)
-
-    //post the image directly to the s3 bucket
-    const headers = {
-      "Content-Type": "multipart/form-data"
+  const handleChange = (target) => {
+    if (target.files) {
+      if (target.files.length !== 0) {
+        const file = target.files[0];
+       
+        dispatch(addfile(file));
+        history.push('./postUpload')
+      }
     }
-    await axios.put(url, file, {headers})
-
-    const imageUrl = url.split("?")[0]
-    console.log(imageUrl)
-    dispatch(captureNewPhoto(imageUrl));
-    history.push('/postUpload')
   }
 
   return (
-    <div>
-      <form id='imageForm' onSubmit={handleSubmit}>
-          <input name="imageInput" type="file" accept="image/*" onChange={handleChange} />
-          <input type='submit' value="Submit" />
-      </form>
-      {source.length ? <img src={source} /> : <p>No image uploaded</p>}
-      </div>
+    <div className='upload-component-div'>
+          <input name="imageInput" type="file" accept="image/*" onChange={(e) => handleChange(e.target)} id="file" className="file" />
+          <label htmlFor="file" className='upload-component-div-label'>Capture / Upload </label>
+    </div>
   );
 }
 

@@ -10,23 +10,19 @@ export const setSong = (song) => {
     }
 }
 
-export const fetchSongFromSpotify = (playlistId, token, imageId) => {
+export const fetchSongFromSpotify = (playlistId, imageId) => {
     return async (dispatch) => {
         try {
-            console.log("playlistId:", playlistId)
-            // this fucntion going to take the rgb value and return the playlistId
-            // const playlistId = jinFunction(rgb)
-            // the next three playlist ids for testing, uncomment one and send the request.
-            //const playlistId = '37i9dQZF1DWXb9I5xoXLjp'
-            //const playlistId = '37i9dQZF1DXaXB8fQg7xif'
-            //const playlistId = '37i9dQZF1DXaUDcU6KDCj4'
+            let token = JSON.parse(window.localStorage.getItem("token")).accessToken
+            
             const bearerToken = `Bearer ${token}`
+            
             const { data: response } = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
                 headers: {
                     authorization: bearerToken,
                 },
             });
-            console.log("response:", response)
+            
             let max = response.tracks.items.length;
 
             // create a random number function
@@ -37,19 +33,19 @@ export const fetchSongFromSpotify = (playlistId, token, imageId) => {
             await axios.post(`/api/songs/${imageId}`, {
                 song: response.tracks.items[songNumber].track.uri
             })
-            console.log("SETSONG:", response.tracks.items[songNumber].track)
+            window.localStorage.setItem("song", JSON.stringify(response.tracks.items[songNumber].track));
             // this will send the track inforation as an object to the reducer.
             // including the url which can be accessed by adding .external_urls.spotify
             dispatch(setSong(response.tracks.items[songNumber].track));
-            // the next line will send the track url only.
-            // dispatch(setSong(response.tracks.items[songNumber].track.external_urls.spotify));
+            
         } catch (err) {
             console.log(err)
         }
     }
 }
 
-const initialState = {};
+const initialState = JSON.parse(window.localStorage.getItem("song")) || {};
+
 
 export default function(state = initialState, action) {
     switch (action.type) {
