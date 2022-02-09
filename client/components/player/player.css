@@ -41,6 +41,15 @@
     width: 100%;
 }
 
+@media screen and (min-width:1366px){ 
+    .logo-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
 .player-home-link {
     width: 5%;
 }
