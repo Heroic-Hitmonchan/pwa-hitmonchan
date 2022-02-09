@@ -41,8 +41,12 @@
     width: 100%;
 }
 
+.player-home-link {
+    width: 5%;
+}
+
 .player-home-link-logo {
-    width: 15%;
+    width: 100%;
 }
 
 .player-div {

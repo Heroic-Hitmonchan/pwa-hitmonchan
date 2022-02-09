@@ -21,8 +21,12 @@
     width: 100%;
 }
 
+.post-upload-logo-div-link {
+    width: 5%;
+}
+
 .post-upload-links-logo {
-    width: 15%;
+    width: 100%;
 }
 
 .post-upload-btns-div {

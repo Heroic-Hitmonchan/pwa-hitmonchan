@@ -46,7 +46,7 @@ function postUpload() {
   return (
     <div className="post-upload-page-div">
       <div className="post-upload-logo-div">
-        <Link to="/home" onClick={anotherImage} >
+        <Link to="/home" onClick={anotherImage} className='post-upload-logo-div-link'>
           <img src="/logo.png" className="post-upload-links-logo" />
         </Link>
       </div>
