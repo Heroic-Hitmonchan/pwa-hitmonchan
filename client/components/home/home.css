@@ -12,6 +12,8 @@
     align-items: center;
 }
 
+
+
 .home-page-before-login-div > img {
    height: 30%;
    width: 15%; 
@@ -20,6 +22,8 @@
 .home-page-before-login-div > p {
     margin-bottom: 2%;
     margin-top: 3%;
+    padding-left: 3%;
+    padding-bottom: 3%;
     font-size: 80px;
     text-shadow: 6px 6px 6px #333;
     text-decoration: none;
@@ -40,15 +44,71 @@
 
 .home-page-after-login-div {
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .home-page-after-login-div > p {
-    font-size: 70px;
+    text-align: center;
+    font-size: 500%;
+
     text-shadow: 6px 6px 6px #333;
 }
+
+@media only screen and (max-width: 800px) {
+
+    .home-page-after-login-div {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-page-after-login-div > p { 
+        padding: 0 10%;
+       font-size: 2em; 
+       text-align: center;
+       margin-top: 20%;
+       margin-bottom: 20%;
+       text-shadow: 6px 6px 6px #333;
+    }
+    .home-page-before-login-div {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-page-before-login-div > p {
+        margin-bottom: 2%;
+        margin-top: 3%;
+        padding-left: 3%;
+        padding-bottom: 3%;
+        font-size: 3em;
+        text-shadow: 6px 6px 6px #333;
+        text-decoration: none;
+    }
+ }
+
+ @media only screen and (max-width: 700px) {
+    .home-page-before-login-div > img {
+        height: 30%;
+        width: 30%; 
+     }
+ }
+
+ @media only screen and (max-width: 700px) {
+    .home-page-before-login-div > img {
+        height: 30%;
+        width: 40%; 
+     }
+ }
 
 .footer-home-page {
     margin-top: auto;

@@ -37,12 +37,26 @@
 .logo-div {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     width: 100%;
 }
 
+/* @media (max-width:1366px) and (display-mode:standalone) { 
+    .logo-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+    }
+} */
+
+.player-home-link {
+    width: 10%;
+}
+
 .player-home-link-logo {
-    width: 15%;
+    width: 100%;
 }
 
 .player-div {
