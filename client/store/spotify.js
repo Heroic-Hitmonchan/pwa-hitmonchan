@@ -21,7 +21,7 @@ export const fetchSongFromSpotify = (playlistId, token, imageId) => {
             //const playlistId = '37i9dQZF1DXaXB8fQg7xif'
             //const playlistId = '37i9dQZF1DXaUDcU6KDCj4'
             const bearerToken = `Bearer ${token}`
-            const { data: response } = await axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+            const { data: response } = await axios.get(`https://api.spotify.com/v1/users/playlists/${playlistId}`, {
                 headers: {
                     authorization: bearerToken,
                 },

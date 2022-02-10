@@ -10,11 +10,9 @@ export const fetchHistory = (history) => {
 };
 
 export const _fetchHistoryThunk = () => {
-  console.log("Hello!")
   return async (dispatch) => {
     try {
       const { data: history } = await axios.get("/api/songs/");
-      console.log(history)
       dispatch(fetchHistory(history))
     } catch (error) {
       console.error(error);
