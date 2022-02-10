@@ -14,9 +14,7 @@ const playlist = {
      ] : null;
   }
 
-  // input: RGB array and an optional secondary array of RGB arrays
-  // output: playlist specified in the above object
-  // example: colorSort([1, 255, 25]) returns playlist.folk (37i9dQZF1DXaUDcU6KDCj4)
+  
   const colorSort = (hex) => {
     const accentArr = hexToRgb(hex)
     let [red, green, blue] = accentArr
