@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/user";
 import { setToken, updateToken } from "../../store/token";
-import Uploadphoto from "../uploadPhoto/Uploadphoto"
+import Uploadphoto from "../uploadPhoto/Uploadphoto";
 import "./home.css";
 import axios from "axios";
 
@@ -108,26 +108,36 @@ export const Home = () => {
 
   if (Object.keys(token).length === 0) {
     return (
-      <div className='home-page-before-login-div'>
-        <img src='/logo.png' />
+      <div className="home-page-before-login-div">
+        <img src="/logo.png" />
         <p>Moments</p>
-        <a href={LOGIN} className='login-btn'>Login
-          with Spotify</a>
+        <a href={LOGIN} className="login-btn">
+          Login with Spotify
+        </a>
       </div>
     );
   } else {
     return (
-      <div className='home-page-after-login-div'>
+      <div className="home-page-after-login-div">
         <p>Hey, {userInfo.display_name}</p>
-        < Uploadphoto />
-        <div className='footer-home-page'>
-          <div className='footer-home-page-leftside'>
-            <input type='image' src='/history.png' onClick={() => ({})} id='hidtory-input' />
+        <Uploadphoto />
+        <div className="footer-home-page">
+          <div className="footer-home-page-leftside">
+            <input
+              type="image"
+              src="/history.png"
+              onClick={() => ({})}
+              id="hidtory-input"
+            />
           </div>
-          <div className='footer-home-page-rightside'>
-            <input type='image' src='/setting.png' onClick={logout} id='setting-input' />
+          <div className="footer-home-page-rightside">
+            <input
+              type="image"
+              src="/setting.png"
+              onClick={logout}
+              id="setting-input"
+            />
           </div>
-
         </div>
       </div>
     );
