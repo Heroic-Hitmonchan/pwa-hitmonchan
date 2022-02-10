@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/user";
 import { setToken, updateToken } from "../../store/token";
+import { useHistory } from 'react-router-dom'
 import Uploadphoto from "../uploadPhoto/Uploadphoto"
 import "./home.css";
 import axios from "axios";
@@ -53,6 +54,7 @@ export const Home = () => {
 
   // extract the code value from the returned URL.
   const code = new URLSearchParams(window.location.search).get("code");
+  const history = useHistory()
 
   useEffect(() => {
     if (code !== null) {
@@ -122,7 +124,7 @@ export const Home = () => {
         < Uploadphoto />
         <div className='footer-home-page'>
           <div className='footer-home-page-leftside'>
-            <input type='image' src='/history.png' onClick={() => ({})} id='hidtory-input' />
+            <input type='image' src='/history.png' onClick={() => history.push('/history')} id='hidtory-input' />
           </div>
           <div className='footer-home-page-rightside'>
             <input type='image' src='/setting.png' onClick={logout} id='setting-input' />
