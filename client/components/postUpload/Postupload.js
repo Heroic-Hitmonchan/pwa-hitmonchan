@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { addfile, captureNewPhoto } from '../../store/camera'
 import axios from 'axios'
 import './postupload.css'
 
 function postUpload() {
 
+  const [capturedImage, setCapturedImage] = useState('')
+
   const dispatch = useDispatch()
+  let history = useHistory()
 
   const { file, photo, token, user, song } = useSelector((state) => {
 
@@ -20,7 +24,21 @@ function postUpload() {
     }
   });
 
-  const capturedImage = URL.createObjectURL(file);
+  // let capturedImage;
+
+
+  useEffect(() => {
+    // if ( Object.keys(file).length === 0) {
+    if (!file) {
+      // console.log(typeof(file))
+      console.log(Object.keys(file).length)
+      history.push('./home')
+    } else {
+      setCapturedImage(URL.createObjectURL(file))
+    }
+  }, [])
+
+
 
   const matchSong = async () => {
     //get secure URL from server
