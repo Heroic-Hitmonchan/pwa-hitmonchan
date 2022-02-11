@@ -1,0 +1,63 @@
+
+
+.aboutus-div {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+} 
+
+.team-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+}
+
+.members-div {
+ display: flex;
+ justify-content: flex-end;
+ align-items: center;
+ margin:2% 5%;
+ width: 20%;
+ box-shadow: 0px 0px 10px rgb(255, 255, 255);
+}
+
+.members-div:hover {
+    background-color: #ff6f61;
+}
+
+.members-div > a{
+    width: 10%;
+    margin:0% 2%;
+    align-items:center ;
+    display: flex;
+}
+
+.members-div > p{
+    margin-right: auto;
+    padding-left: 3%;
+    font-size: 20px;
+}
+
+.click-icons {
+    width: 100%;
+    height: 100%;
+}
+
+.Meet-Our-Team-Members {
+    font-size: 25px;
+
+}
+
+@media only screen and (max-width: 800px) {
+    .members-div {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin:2% 5%;
+        width: 80%;
+        box-shadow: 0px 0px 10px rgb(255, 255, 255);
+       }
+}

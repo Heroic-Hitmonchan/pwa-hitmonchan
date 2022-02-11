@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/user";
 import { setToken, updateToken } from "../../store/token";
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import Uploadphoto from "../uploadPhoto/Uploadphoto"
 import "./home.css";
 import axios from "axios";
 
+
 // variables needed in the first request to spotify to get the code.
 const CLIENT_ID = "12ab9fc82d684679b569135ea050d5d8";
-// const REDIRECT_URI = "http://localhost:8080/home";
-const REDIRECT_URI = "https://moments-pwa.herokuapp.com/home"
+const REDIRECT_URI = "http://localhost:8080/home";
+// const REDIRECT_URI = "https://moments-pwa.herokuapp.com/home"
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "code";
 const SCOPE = [
@@ -115,6 +116,9 @@ export const Home = () => {
         <p>Moments</p>
         <a href={LOGIN} className='login-btn'>Login
           with Spotify</a>
+        <Link to="/aboutus" className="about-us-btn">
+          About us
+        </Link>
       </div>
     );
   } else {
@@ -122,6 +126,9 @@ export const Home = () => {
       <div className='home-page-after-login-div'>
         <p>Hey, {userInfo.display_name}</p>
         < Uploadphoto />
+        <Link to="/aboutus" className="homepage-middle">
+            About us
+          </Link>
         <div className='footer-home-page'>
           <div className='footer-home-page-leftside'>
             <input type='image' src='/history.png' onClick={() => history.push('/history')} id='hidtory-input' />
@@ -129,7 +136,6 @@ export const Home = () => {
           <div className='footer-home-page-rightside'>
             <input type='image' src='/setting.png' onClick={logout} id='setting-input' />
           </div>
-
         </div>
       </div>
     );

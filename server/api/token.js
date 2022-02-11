@@ -5,8 +5,8 @@ require("dotenv").config({ path: "../../.env" })
 const credentials = {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    // redirectUri: "http://localhost:8080/home"
-    redirectUri: "https://moments-pwa.herokuapp.com/home"
+    redirectUri: "http://localhost:8080/home"
+    // redirectUri: "https://moments-pwa.herokuapp.com/home"
 };
 
 router.post('/login', (req, res) => {
@@ -36,8 +36,8 @@ router.post('/refresh', (req, res) => {
         refreshToken,
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
-        // redirectUri: "http://localhost:8080/home"
-        redirectUri: "https://moments-pwa.herokuapp.com/home"
+        redirectUri: "http://localhost:8080/home"
+        // redirectUri: "https://moments-pwa.herokuapp.com/home"
     });
     spotifyApi.refreshAccessToken()
         .then((data) => {
