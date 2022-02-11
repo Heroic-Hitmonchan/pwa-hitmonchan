@@ -6,6 +6,7 @@ import { useHistory, Link } from 'react-router-dom'
 import Uploadphoto from "../uploadPhoto/Uploadphoto"
 import "./home.css";
 import axios from "axios";
+import { motion } from "framer-motion"
 
 
 // variables needed in the first request to spotify to get the code.
@@ -111,24 +112,37 @@ export const Home = () => {
 
   if (Object.keys(token).length === 0) {
     return (
-      <div className='home-page-before-login-div'>
+      <motion.div className='home-page-before-login-div'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 1 }}
+      >
         <img src='/logo.png' />
         <p>Moments</p>
-        <a href={LOGIN} className='login-btn'>Login
+        <a href={LOGIN} className='login-btn'
+        >Login
           with Spotify</a>
         <Link to="/aboutus" className="about-us-btn">
           About us
         </Link>
-      </div>
+      </motion.div>
     );
   } else {
     return (
-      <div className='home-page-after-login-div'>
-        <p>Hey, {userInfo.display_name}</p>
+      <motion.div className='home-page-after-login-div'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 1 }}
+      >
+        <motion.p
+          initial={{ y: -250 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 0.8, type: 'spring', stiffness: 120 }}
+        >Hey, {userInfo.display_name}</motion.p>
         < Uploadphoto />
         <Link to="/aboutus" className="homepage-middle">
-            About us
-          </Link>
+          About us
+        </Link>
         <div className='footer-home-page'>
           <div className='footer-home-page-leftside'>
             <input type='image' src='/history.png' onClick={() => history.push('/history')} id='hidtory-input' />
@@ -137,7 +151,7 @@ export const Home = () => {
             <input type='image' src='/setting.png' onClick={logout} id='setting-input' />
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 };
