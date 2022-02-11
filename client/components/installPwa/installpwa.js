@@ -17,7 +17,7 @@ const InstallPWA = () => {
 
     const timerIn = setTimeout(() => {
         setTimer(true)
-    }, 5000)
+    }, 3000)
 
     const timerOut = setTimeout(() => {
         setTimer(false)
