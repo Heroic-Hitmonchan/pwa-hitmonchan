@@ -7,6 +7,8 @@ import SongGeneration from './components/player/Player'
 import Uploadphoto from './components/uploadPhoto/Uploadphoto'
 import Postupload from './components/postUpload/Postupload'
 import History from './components/list/History'
+import Installpwa from './components/installPwa/installpwa'
+
 /**
  * COMPONENT
  */
@@ -14,7 +16,7 @@ const Routes = () => {
 
   return (
     <div>
-      
+      <Installpwa />
       <Switch>
         <Route exact path="/home" component={Home} />
         {/* <Route path="/camera" component={Camera} /> */}
@@ -31,4 +33,3 @@ const Routes = () => {
 }
 
 export default Routes;
-
