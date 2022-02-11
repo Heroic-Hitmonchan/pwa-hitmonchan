@@ -30,8 +30,13 @@ export const fetchSongFromSpotify = (playlistId, imageId) => {
                 return Math.floor(Math.random() * max);
             };
             const songNumber = generateSongNum();
+            const songInfo = response.tracks.items[songNumber].track
+            console.log(songInfo)
+            const artists = songInfo.artists.map(function(art) { return art.name })
             await axios.post(`/api/songs/${imageId}`, {
-                song: response.tracks.items[songNumber].track.uri
+                song: songInfo.uri,
+                artistName: artists,
+                trackName: songInfo.name
             })
             window.localStorage.setItem("song", JSON.stringify(response.tracks.items[songNumber].track));
             // this will send the track inforation as an object to the reducer.

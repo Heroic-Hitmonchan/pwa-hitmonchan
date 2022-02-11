@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import SongGeneration from './components/player/Player'
 import Uploadphoto from './components/uploadPhoto/Uploadphoto'
 import Postupload from './components/postUpload/Postupload'
+import History from './components/list/History'
 import Installpwa from './components/installPwa/installpwa'
 
 /**
@@ -23,6 +24,7 @@ const Routes = () => {
         <Route path="/songgeneration" component={SongGeneration} />
         <Route path="/uploadphoto" component={Uploadphoto} />
         <Route path="/postupload" component={Postupload} />
+        <Route path="/history" component={History} />
         <Redirect to="/home" />
       </Switch>
       
@@ -31,4 +33,3 @@ const Routes = () => {
 }
 
 export default Routes;
-
