@@ -30,7 +30,7 @@ export const photo = (state = initialState1, action)  => {
     }
 }
 
-let initialState2 = JSON.parse(window.localStorage.getItem("file")) || {}
+let initialState2 =  ''
 export const file = (state = initialState2, action)  => {
     switch (action.type) {
         case ADD_FILE:
