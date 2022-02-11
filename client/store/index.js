@@ -7,13 +7,15 @@ import {file} from './camera'
 import song from './spotify'
 import user from './user'
 import token from './token'
+import list from './list'
 
 const reducer = combineReducers({
   file,
   photo,
   song,
   user,
-  token
+  token,
+  list
 });
 
 const middleware = composeWithDevTools(
