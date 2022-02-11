@@ -1,80 +1,79 @@
-
-.post-upload-page-div  {
+.post-upload-page-div {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 1%;
-}
-
-.post-upload-page-div > img {
+  }
+  
+  .post-upload-page-div > img {
     height: 50%;
     width: 30%;
     border-radius: 10px;
-    box-shadow: 0px 0px 8px rgb(255,255,255);
-}
-
-.post-upload-logo-div {
+    box-shadow: 0px 0px 8px rgb(255, 255, 255);
+  }
+  
+  .post-upload-logo-div {
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100%;
-}
-
-.post-upload-logo-div-link {
+  }
+  
+  .post-upload-logo-div-link {
     width: 10%;
     margin-bottom: 2%;
-}
-
-.post-upload-links-logo {
+  }
+  
+  .post-upload-links-logo {
     width: 100%;
-}
-
-.post-upload-btns-div {
+  }
+  
+  .post-upload-btns-div {
     width: 100%;
     margin-top: 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-}
-
-.post-upload-links {
+  }
+  
+  .post-upload-links {
     text-decoration: none;
     color: white;
-    background-color: rgb(58, 4, 103);
+    background-color: transparent;
     padding: 2% 4%;
     border-radius: 10px;
     font-size: 20px;
-    box-shadow: 0px 0px 8px rgb(255,255,255);
-}
-
-.post-upload-links:hover {
+    box-shadow: 0px 0px 8px rgb(255, 255, 255);
+  }
+  
+  .post-upload-links:hover {
     background-color: #ff6f61;
-}
-
-@media only screen and (max-width: 500px) {
+  }
+  
+  @media only screen and (max-width: 500px) {
     .post-upload-page-div > img {
-        height: 50%;
-        width: 80%;
-        border-radius: 10px;
-        box-shadow: 0px 0px 8px rgb(255,255,255);
+      height: 50%;
+      width: 80%;
+      border-radius: 10px;
+      box-shadow: 0px 0px 8px rgb(255, 255, 255);
     }
-
+  
     .post-upload-logo-div {
-        margin-top: 10%;
-        margin-bottom: 5%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
+      margin-top: 10%;
+      margin-bottom: 5%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
     }
-
+  
     .post-upload-btns-div {
-        margin-top: 20%;
-        width: 100%;
-        
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
+      margin-top: 20%;
+      width: 100%;
+  
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
     }
- }
+  }
