@@ -8,6 +8,8 @@ import Uploadphoto from './components/uploadPhoto/Uploadphoto'
 import Postupload from './components/postUpload/Postupload'
 import History from './components/list/History'
 import Installpwa from './components/installPwa/installpwa'
+import Aboutus from './components/aboutus/Aboutus';
+
 
 /**
  * COMPONENT
@@ -19,15 +21,13 @@ const Routes = () => {
       <Installpwa />
       <Switch>
         <Route exact path="/home" component={Home} />
-        {/* <Route path="/camera" component={Camera} /> */}
-        {/* <Route path="/postcamera" component={Postcamera} /> */}
         <Route path="/songgeneration" component={SongGeneration} />
         <Route path="/uploadphoto" component={Uploadphoto} />
         <Route path="/postupload" component={Postupload} />
         <Route path="/history" component={History} />
+        <Route path="/aboutus" component={Aboutus} />
         <Redirect to="/home" />
       </Switch>
-      
     </div>
   )
 }
