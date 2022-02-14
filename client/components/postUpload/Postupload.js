@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { addfile, captureNewPhoto } from '../../store/camera'
 import axios from 'axios'
 import './postupload.css'
+import { motion } from "framer-motion"
 
 function postUpload() {
 
@@ -24,14 +25,8 @@ function postUpload() {
     }
   });
 
-  // let capturedImage;
-
-
   useEffect(() => {
-    // if ( Object.keys(file).length === 0) {
     if (!file) {
-      // console.log(typeof(file))
-      console.log(Object.keys(file).length)
       history.push('./home')
     } else {
       setCapturedImage(URL.createObjectURL(file))
@@ -61,12 +56,21 @@ function postUpload() {
   }
 
   return (
-    <div className="post-upload-page-div">
-      <div className="post-upload-logo-div">
+    <motion.div className="post-upload-page-div"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 1 }}
+    >
+      <motion.div className="post-upload-logo-div"
+        whileHover={{
+          scale: 1.2,
+          transition: { duration: 0.3 },
+        }}
+      >
         <Link to="/home" onClick={anotherImage} className='post-upload-logo-div-link'>
           <img src="/logo.png" className="post-upload-links-logo" />
         </Link>
-      </div>
+      </motion.div>
       <img
         src={capturedImage}
       />
@@ -78,7 +82,7 @@ function postUpload() {
           another image
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

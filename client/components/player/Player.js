@@ -8,6 +8,7 @@ import colorSort from '../../store/colorSort'
 import { fetchSongFromSpotify, setSong } from '../../store/spotify'
 import { captureNewPhoto } from '../../store/camera'
 import './player.css'
+import { motion } from "framer-motion"
 
 const SongGeneration = () => {
 
@@ -61,12 +62,21 @@ const SongGeneration = () => {
     )
   } else {
     return (
-      <div className='player-page-div'>
-        <div className='logo-div'>
+      <motion.div className='player-page-div'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.4, duration: 1 }}
+      >
+        <motion.div className='logo-div'
+        whileHover={{
+          scale: 1.2,
+          transition: { duration: 0.3 },
+        }}
+        >
           <Link to="/home" className="player-home-link" onClick={clear}>
             <img src="/logo.png" className="player-home-link-logo" />
           </Link>
-        </div>
+        </motion.div>
         <p>your photo matched with {setUp.song.name}, enjoy</p>
         <img className="user-image" src={setUp.photo} />
         <div className='player-div'>
@@ -78,7 +88,7 @@ const SongGeneration = () => {
             showSaveIcon
           />
         </div>
-      </div>
+      </motion.div>
     );
   }
 };
