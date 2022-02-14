@@ -1,0 +1,20 @@
+table {
+    border-spacing: 15px;
+}
+.history-list tr {
+    border: 5px solid white
+}
+
+.history-img {
+    height: 50%;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgb(255, 255, 255);
+}
+
+.history-return-logo {
+    width: 10%;
+    height: 30%;
+    float: right;
+
+}
