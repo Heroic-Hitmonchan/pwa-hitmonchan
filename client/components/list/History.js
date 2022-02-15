@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { _fetchHistoryThunk } from "../../store/list";
+import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
+import "./history.css";
 
 const History = () => {
   const history = useSelector((state) => {
@@ -8,6 +11,7 @@ const History = () => {
     console.log(state);
     return state.list;
   });
+  const homePage = useHistory();
   console.log(history);
   const dispatch = useDispatch();
 
@@ -16,7 +20,17 @@ const History = () => {
   }, []);
 
   return (
-    <div className="history-list">
+    <motion.div
+      className="history-list"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 1 }}
+    >
+      <img
+        src="/logo.png"
+        onClick={() => homePage.push("/home")}
+        className="history-return-logo"
+      />
       <table>
         <tbody>
           <tr>
@@ -29,7 +43,7 @@ const History = () => {
             {history.map((data, idx) => (
               <tr key={idx}>
                 <td>
-                  <img src={data.image.awsUrl} />
+                  <img className="history-img" src={data.image.awsUrl} />
                 </td>
                 <td>{data.trackName}</td>
                 <td>{data.artistName.map((artist) => artist).join(" & ")}</td>
@@ -38,7 +52,7 @@ const History = () => {
           </>
         </tbody>
       </table>
-    </div>
+    </motion.div>
   );
 };
 
