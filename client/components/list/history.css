@@ -1,20 +1,42 @@
 table {
-    border-spacing: 15px;
+  border-spacing: 15px;
 }
 .history-list tr {
-    border: 5px solid white
+  border: 5px solid white;
 }
 
 .history-img {
-    height: 50%;
-    width: 30%;
-    border-radius: 10px;
-    box-shadow: 0px 0px 8px rgb(255, 255, 255);
+  height: 60%;
+  width: 40%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px rgb(255, 255, 255);
 }
 
 .history-return-logo {
+  width: 10%;
+  height: 30%;
+  float: right;
+}
+
+@media only screen and (max-width: 500px) {
+  table {
+    border-spacing: 15px;
+    font-size: 0.8em;
+  }
+  .history-list tr {
+    border: 5px solid white;
+  }
+
+  .history-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgb(255, 255, 255);
+  }
+
+  .history-return-logo {
     width: 10%;
     height: 30%;
     float: right;
-
+  }
 }
